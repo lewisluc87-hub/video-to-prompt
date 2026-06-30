@@ -33,7 +33,7 @@ See [`SPEC.md`](./SPEC.md) for the full implementation spec and design rationale
 ## Install
 
 ```bash
-git clone https://github.com/yourname/video-to-prompt.git
+git clone https://github.com/lewisluc87-hub/video-to-prompt.git
 cd video-to-prompt
 pip install -e ".[all]"      # everything: LLM, object detection, transcription
 # or pick extras individually:
