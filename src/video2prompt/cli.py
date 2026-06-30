@@ -10,7 +10,7 @@ from rich.console import Console
 
 load_dotenv()
 
-from .assemble import format_analysis, run_pipeline
+from .assemble import format_analysis, run_pipeline # noqa: E402
 
 app = typer.Typer(add_completion=False, help="Turn a video into prompts for AI video generation models.")
 console = Console()
