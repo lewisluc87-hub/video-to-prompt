@@ -9,7 +9,7 @@ description = "Turn a video into text prompts for AI video generation models (So
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "Your Name" }]
+authors = [{ name = "Lewis Luc" }]
 dependencies = [
     "typer>=0.12",
     "pydantic>=2.6",
