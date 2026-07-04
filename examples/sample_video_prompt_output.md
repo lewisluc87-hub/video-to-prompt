@@ -1,59 +1,21 @@
-# Example: `--mode video_prompt` output (Runway target)
+# Prompts for C:\Users\lv758\Downloads\GRWM before heading out for a long day  #morningroutine #dayinmylife #asmr #grwm #vlog.mp4
 
-Generated using `video2prompt clip.mp4 --target runway --merge`, on a short
-multi-shot clip containing a person holding a sign, a close-up of an object,
-and a wide moving train shot. Demonstrates the default visual-description
-mode aimed at recreating footage with a video generation model, as opposed
-to `--mode breakdown`'s structured scene-by-scene breakdown (see
-`sample_breakdown_output.md`).
+## Shot 0 (0.0s - 2.9s)
 
-The `runway` formatter produces short, comma-separated descriptors (subject,
-action, camera move, style) matching Runway's Gen-3/4 prompt conventions; the
-`generic`, `sora`, and `veo` targets are available too and reformat the same
-underlying per-shot description differently (see `SPEC.md` section 9 and
-`src/video2prompt/formatters/`).
+Overhead medium shot looking straight down onto a young woman with dark hair seated upright on a large bed covered in soft pink floral bedding, wearing a white off-shoulder top, her head bowed as she handles a small object in her hands. A plush stuffed animal rests against the pillow beside her. The static top-down camera frames her centrally against the pale cream and blush linens, lit by soft ambient indoor light creating a quiet, late-night intimate mood.
 
----
+## Shot 1 (2.9s - 3.5s)
 
-## Shot 0 (0.0s - 2.5s)
+A hand holds a wooden stick with a flame that quickly extinguishes to a glowing ember, held close to a white floral-embroidered pillow on a bed covered in pink rose-print bedding, shot in vertical wide format with a gentle left-to-right pan. Warm, dim bedroom lighting casts soft shadows; the mood is intimate and late-night, with muted beige and dusty rose tones dominating the cozy domestic scene.
 
-person, stop sign, close-up, camera zoom out slow, mid lighting, #282926, #d5d1cb
+## Shot 2 (3.5s - 4.1s)
 
-## Shot 1 (2.5s - 3.4s)
+A wide establishing shot of a styled white surface displaying an iridescent abalone shell on a wooden stand holding palo santo sticks, three Loewe perfume bottles with pastel caps arranged in the background, bundled sage smudge sticks, a small crystal angel figurine, and a feather, all under soft, warm ambient light. The camera performs a medium tilt downward, revealing the full tabletop arrangement with warm beige and brown tones.
 
-backpack, medium close-up, camera tilt down-to-up fast, mid lighting, #181c21, #63737f
+## Shot 3 (4.1s - 9.1s)
 
-## Shot 2 (12.0s - 13.4s)
+A young woman in a cream off-shoulder lace crop top and floral mini skirt stands in a dimly lit kitchen area at night, holding a clear glass near a white electric water dispenser. Medium shot framing her torso and arms, static camera, warm neutral tones with soft ambient indoor lighting casting gentle shadows, creating a quiet, late-night domestic mood.
 
-train, close-up, camera tilt up-to-down medium, low-key lighting, #141122, #b22528
+## Shot 4 (9.1s - 10.0s)
 
-## Master Prompt
-
-A close-up shot zooms slowly out from a person holding a stop sign against a
-neutral backdrop, cutting to a fast upward tilt revealing a backpack in
-medium close-up, then to a close-up of a train under low-key lighting with a
-slow downward tilt -- muted, slightly desaturated color palette throughout,
-naturalistic mid-to-low lighting, handheld-feeling camera movement between
-each shot.
-
----
-
-### Same shot, different targets (for comparison)
-
-**`generic`** (plain descriptive paragraph, default):
-> Medium close-up of a person holding a red stop sign, positioned right of
-> frame against a neutral gray background. The camera performs a slow zoom
-> out, gradually revealing more of the scene. Lighting is flat and even,
-> mid-key, with a muted color palette of dark grays and a single red accent
-> from the sign.
-
-**`sora`** (cinematic narrative framing):
-> A cinematic shot: A person stands holding a red stop sign, framed in a
-> medium close-up against a plain gray backdrop. The camera slowly zooms
-> out, widening the frame and revealing more context around the subject,
-> under soft, even lighting.
-
-**`veo`** (explicit camera-direction clause):
-> A person holds a red stop sign in a medium close-up against a neutral
-> background, evenly lit with a muted gray and red color palette. Camera:
-> slow zoom out.
+A young woman with long dark hair stands at a bathroom vanity, shot from behind in a medium close-up, wearing a white off-shoulder crop top and floral shorts. She faces a large lit mirror reflecting her front, surrounded by skincare products on the counter. The static camera holds center-weighted composition in a bright, white bathroom with soft, even artificial lighting, conveying a quiet late-night domestic mood.
