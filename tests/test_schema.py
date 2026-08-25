@@ -1,15 +1,13 @@
 """Tests for video2prompt.schema — the pipeline's shared data contract."""
 import pytest
 from pydantic import ValidationError
-
 from video2prompt.schema import (
-    Subject,
     CameraMotion,
     ColorInfo,
     ShotRecord,
+    Subject,
     VideoAnalysis,
 )
-
 
 # ---------- Subject ----------
 
@@ -71,14 +69,14 @@ def test_color_info_rejects_invalid_brightness():
 
 def _minimal_shot(**overrides):
     """Build a minimal valid ShotRecord, overriding fields as needed."""
-    base = dict(
-        shot_index=0,
-        start_time=0.0,
-        end_time=2.5,
-        duration=2.5,
-        resolution="1920x1080",
-        fps=24.0,
-    )
+    base = {
+        "shot_index": 0,
+        "start_time": 0.0,
+        "end_time": 2.5,
+        "duration": 2.5,
+        "resolution": "1920x1080",
+        "fps": 24.0,
+    }
     base.update(overrides)
     return ShotRecord(**base)
 
