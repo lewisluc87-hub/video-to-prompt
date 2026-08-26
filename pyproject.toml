@@ -28,7 +28,7 @@ llm = ["anthropic>=0.34"]
 objects = ["ultralytics>=8.2"]
 transcribe = ["faster-whisper>=1.0"]
 ocr = ["pytesseract>=0.3.10", "Pillow>=10.0", "wordninja>=2.0"]
-dev = ["pytest>=8.0", "ruff>=0.5"]
+dev = ["pytest>=8.0", "ruff==0.16.4"]
 all = ["video2prompt[llm,objects,transcribe,ocr,dev]"]
 
 [project.scripts]
