@@ -31,7 +31,7 @@ def estimate_motion(frame_a_path: Path, frame_b_path: Path) -> tuple[CameraMotio
 
     fx = flow[..., 0]
     fy = flow[..., 1]
-    mag, ang = cv2.cartToPolar(fx, fy)
+    mag, _ang = cv2.cartToPolar(fx, fy)
 
     mean_mag = float(np.mean(mag))
     mean_fx = float(np.mean(fx))

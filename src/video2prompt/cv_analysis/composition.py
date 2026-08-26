@@ -25,7 +25,7 @@ def estimate_composition(subjects: list[Subject]) -> str:
         return "centered / no dominant subject"
 
     primary = max(subjects, key=lambda s: _bbox_area(s.bbox_norm))
-    x0, y0, x1, y1 = primary.bbox_norm
+    x0, _y0, x1, _y1 = primary.bbox_norm
     cx = (x0 + x1) / 2
 
     if cx < 0.4:

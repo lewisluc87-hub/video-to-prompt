@@ -3,19 +3,19 @@ from video2prompt.schema import CameraMotion, ColorInfo, ShotRecord, Subject
 
 
 def make_shot(**overrides) -> ShotRecord:
-    defaults = dict(
-        shot_index=0,
-        start_time=0.0,
-        end_time=3.0,
-        duration=3.0,
-        resolution="1920x1080",
-        fps=30,
-        subjects=[Subject(label="person", confidence=0.9, bbox_norm=(0.3, 0.2, 0.6, 0.9))],
-        shot_size_estimate="medium close-up",
-        composition="rule-of-thirds, subject left",
-        camera_motion=CameraMotion(type="pan", direction="left-to-right", magnitude="slow"),
-        color=ColorInfo(dominant_palette=["#112233", "#aabbcc"], brightness="low-key", contrast="high"),
-    )
+    defaults = {
+        "shot_index": 0,
+        "start_time": 0.0,
+        "end_time": 3.0,
+        "duration": 3.0,
+        "resolution": "1920x1080",
+        "fps": 30,
+        "subjects": [Subject(label="person", confidence=0.9, bbox_norm=(0.3, 0.2, 0.6, 0.9))],
+        "shot_size_estimate": "medium close-up",
+        "composition": "rule-of-thirds, subject left",
+        "camera_motion": CameraMotion(type="pan", direction="left-to-right", magnitude="slow"),
+        "color": ColorInfo(dominant_palette=["#112233", "#aabbcc"], brightness="low-key", contrast="high"),
+    }    
     defaults.update(overrides)
     return ShotRecord(**defaults)
 

@@ -109,7 +109,7 @@ def extract_text(frame_path: Path) -> str:
     try:
         img = Image.open(frame_path)
         raw = pytesseract.image_to_string(img)
-    except Exception:
+    except Exception:  # noqa: BLE001 - OCR failures are non-fatal by design; always fall back to empty string
         return ""
 
     return _clean(raw)
