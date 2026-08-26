@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 from typing import Optional
 
@@ -9,6 +10,17 @@ from dotenv import load_dotenv
 from rich.console import Console
 
 load_dotenv()
+
+# Optional personal-use override -- .env.personal (gitignored) can set
+# VAP_AUTH_MODE=subscription + CLAUDE_CODE_OAUTH_TOKEN for personal runs
+# without touching the shared production .env. override=True lets it win
+# over any ANTHROPIC_API_KEY already loaded above, and also strips a
+# stray ANTHROPIC_API_KEY explicitly in case .env.personal doesn't set one
+# at all (mirrors the belt-and-suspenders approach in VAP's personal_run.py).
+if Path(".env.personal").exists():
+    load_dotenv(".env.personal", override=True)
+    if os.environ.get("VAP_AUTH_MODE") == "subscription":
+        os.environ.pop("ANTHROPIC_API_KEY", None)
 
 from .assemble import format_analysis, run_pipeline # noqa: E402
 
