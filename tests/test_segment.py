@@ -1,6 +1,7 @@
+from pathlib import Path
+
 from video2prompt.ingest import VideoInfo
 from video2prompt.segment import _single_shot_fallback
-from pathlib import Path
 
 
 def test_single_shot_fallback_spans_full_duration():

@@ -5,7 +5,7 @@ canonical JSON shape this maps to.
 """
 from __future__ import annotations
 
-from typing import Literal, Optional
+from typing import Literal
 
 from pydantic import BaseModel, Field
 
@@ -14,12 +14,12 @@ class Subject(BaseModel):
     label: str
     confidence: float
     bbox_norm: tuple[float, float, float, float]  # x0, y0, x1, y1, normalized 0-1
-    track_id: Optional[int] = None
+    track_id: int | None = None
 
 
 class CameraMotion(BaseModel):
     type: Literal["static", "pan", "tilt", "zoom_in", "zoom_out", "tracking", "unknown"] = "unknown"
-    direction: Optional[str] = None
+    direction: str | None = None
     magnitude: Literal["none", "slow", "medium", "fast"] = "none"
 
 
@@ -44,17 +44,17 @@ class ShotRecord(BaseModel):
     color: ColorInfo = Field(default_factory=ColorInfo)
     pacing_note: str = ""
 
-    transcript_segment: Optional[str] = None
-    on_screen_text: Optional[str] = None
+    transcript_segment: str | None = None
+    on_screen_text: str | None = None
 
     keyframe_paths: list[str] = Field(default_factory=list)
     debug_overlay_paths: list[str] = Field(default_factory=list)
 
-    generated_prompt: Optional[str] = None
+    generated_prompt: str | None = None
 
     # Scene-breakdown mode fields (see SPEC.md section on breakdown output)
-    scene_role: Optional[str] = None  # e.g. "Hook / Problem Statement"
-    scene_description: Optional[str] = None  # narrative prose for this scene
+    scene_role: str | None = None  # e.g. "Hook / Problem Statement"
+    scene_description: str | None = None  # narrative prose for this scene
 
 
 class VideoAnalysis(BaseModel):
@@ -63,5 +63,5 @@ class VideoAnalysis(BaseModel):
     fps: float
     resolution: str
     shots: list[ShotRecord] = Field(default_factory=list)
-    master_prompt: Optional[str] = None
-    core_prompt: Optional[str] = None  # one-sentence summary, breakdown mode
+    master_prompt: str | None = None
+    core_prompt: str | None = None  # one-sentence summary, breakdown mode

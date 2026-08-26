@@ -1,4 +1,7 @@
-from video2prompt.cv_analysis.composition import estimate_composition, estimate_shot_size
+from video2prompt.cv_analysis.composition import (
+    estimate_composition,
+    estimate_shot_size,
+)
 from video2prompt.schema import Subject
 
 

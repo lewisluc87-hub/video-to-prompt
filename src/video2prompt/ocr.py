@@ -17,8 +17,8 @@ of the pipeline is unaffected.
 from __future__ import annotations
 
 import os
-import shutil
 import re
+import shutil
 from pathlib import Path
 
 try:
@@ -88,7 +88,7 @@ def extract_text(frame_path: Path) -> str:
             import sys
 
             try:
-                import pytesseract  # noqa: F401
+                import pytesseract
 
                 print(
                     "[video2prompt] tesseract binary not found (checked PATH and "

@@ -42,7 +42,12 @@ import os
 from pathlib import Path
 
 from ..schema import ShotRecord
-from .base import BREAKDOWN_SYSTEM_PROMPT, CORE_PROMPT_SYSTEM_PROMPT, SYSTEM_PROMPT, LLMProvider
+from .base import (
+    BREAKDOWN_SYSTEM_PROMPT,
+    CORE_PROMPT_SYSTEM_PROMPT,
+    SYSTEM_PROMPT,
+    LLMProvider,
+)
 
 _MODEL = "claude-sonnet-4-6"
 
@@ -136,7 +141,12 @@ class AnthropicProvider(LLMProvider):
         Claude Agent SDK using personal subscription OAuth instead of API
         billing. Mirrors generator.py::_call_claude_subscription()."""
         try:
-            from claude_agent_sdk import query, ClaudeAgentOptions, AssistantMessage, TextBlock
+            from claude_agent_sdk import (
+                AssistantMessage,
+                ClaudeAgentOptions,
+                TextBlock,
+                query,
+            )
         except ImportError as exc:
             raise RuntimeError(
                 "claude-agent-sdk not installed. Run: pip install claude-agent-sdk"
@@ -226,8 +236,7 @@ def _parse_breakdown_json(text: str) -> dict:
     cleaned = text.strip()
     if cleaned.startswith("```"):
         cleaned = cleaned.split("```")[1]
-        if cleaned.startswith("json"):
-            cleaned = cleaned[4:]
+        cleaned = cleaned.removeprefix("json")
     cleaned = cleaned.strip()
 
     data = _try_parse_json(cleaned)

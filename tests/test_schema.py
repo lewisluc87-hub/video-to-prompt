@@ -1,6 +1,7 @@
 """Tests for video2prompt.schema — the pipeline's shared data contract."""
 import pytest
 from pydantic import ValidationError
+
 from video2prompt.schema import (
     CameraMotion,
     ColorInfo,

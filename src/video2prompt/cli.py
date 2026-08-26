@@ -3,7 +3,6 @@ from __future__ import annotations
 import json
 import os
 from pathlib import Path
-from typing import Optional
 
 import typer
 from dotenv import load_dotenv
@@ -22,7 +21,7 @@ if Path(".env.personal").exists():
     if os.environ.get("VAP_AUTH_MODE") == "subscription":
         os.environ.pop("ANTHROPIC_API_KEY", None)
 
-from .assemble import format_analysis, run_pipeline # noqa: E402
+from .assemble import format_analysis, run_pipeline
 
 app = typer.Typer(add_completion=False, help="Turn a video into prompts for AI video generation models.")
 console = Console()
@@ -31,7 +30,7 @@ console = Console()
 @app.command()
 def main(
     input: str = typer.Argument(..., help="Path to the input video file."),
-    output: Optional[str] = typer.Option(None, "--output", "-o", help="Output file path (default: stdout)."),
+    output: str | None = typer.Option(None, "--output", "-o", help="Output file path (default: stdout)."),
     format: str = typer.Option("md", "--format", help="Output format: json | md | txt"),
     mode: str = typer.Option(
         "video_prompt", "--mode",
@@ -47,7 +46,7 @@ def main(
     no_ocr: bool = typer.Option(False, "--no-ocr", help="Skip on-screen text (OCR) extraction."),
     whisper_model: str = typer.Option("base", "--whisper-model", help="tiny|base|small|medium"),
     provider: str = typer.Option("anthropic", "--provider", help="LLM provider: anthropic"),
-    max_shots: Optional[int] = typer.Option(None, "--max-shots", help="Cap number of shots processed."),
+    max_shots: int | None = typer.Option(None, "--max-shots", help="Cap number of shots processed."),
     keep_frames: bool = typer.Option(False, "--keep-frames", help="Don't delete extracted keyframes."),
     debug: bool = typer.Option(False, "--debug", help="Generate annotated keyframe overlays for verification."),
     verbose: bool = typer.Option(False, "--verbose", help="Verbose logging."),
@@ -72,7 +71,7 @@ def main(
                 debug=debug,
                 keep_frames=keep_frames,
             )
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             console.print(f"[bold red]Error:[/bold red] {exc}")
             raise typer.Exit(code=1) from exc
 
