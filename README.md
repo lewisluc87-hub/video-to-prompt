@@ -1,5 +1,7 @@
 # video2prompt
 
+[![CI](https://github.com/lewisluc87-hub/video-to-prompt/actions/workflows/ci.yml/badge.svg)](https://github.com/lewisluc87-hub/video-to-prompt/actions/workflows/ci.yml)
+
 Turn a video into text prompts for AI video generation models (Sora, Runway, Veo).
 
 `video2prompt` analyzes a source video locally — shot detection, object/subject
@@ -134,6 +136,20 @@ Vendor prompt conventions (Sora/Runway/Veo) change over time — the
 formatters in `src/video2prompt/formatters/` encode a snapshot of current
 guidance and should be rechecked against each vendor's docs periodically.
 
-## License
+## Running the tests
 
+```bash
+pip install -e ".[all]"
+pytest -q
+```
+
+34 tests covering the CV/schema pydantic models (`ShotRecord`, `VideoAnalysis`) plus formatters, segment, and composition logic. CI runs `ruff check .` and `pytest -q` on every push.
+
+## Verified
+
+- Ran end-to-end on a real video in both modes: `--no-llm` (template fallback — works, but CV heuristics can misfire on non-camera content, e.g. mistaking a UI dashboard for a "cell phone") and full LLM mode (`--mode breakdown`, real Anthropic API key), which cleaned up OCR noise and produced accurate scene-role labels and a correct one-sentence summary.
+- Dependency versions that affect CI output (e.g. `ruff`) are pinned, after an earlier unpinned version silently pulled in a broader default lint rule set and turned CI red repo-wide.
+
+## License
+  
 MIT — see [`LICENSE`](./LICENSE).
